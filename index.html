@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Night Circuit Legends</title>
+  <meta
+    name="description"
+    content="Night Circuit Legends is a browser racing game with story progression, car upgrades, and room-code versus play."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Rajdhani:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero-panel">
+      <div>
+        <p class="eyebrow">Street League Story Racer</p>
+        <h1>Night Circuit Legends</h1>
+        <p class="hero-copy">
+          Build your crew from rookie runs to midnight championships, tune your car between events,
+          and challenge a friend with a room code in the versus prototype.
+        </p>
+      </div>
+      <div class="status-cluster">
+        <article class="stat-chip">
+          <span>Driver Level</span>
+          <strong id="driverLevel">1</strong>
+        </article>
+        <article class="stat-chip">
+          <span>Credits</span>
+          <strong id="creditsValue">0</strong>
+        </article>
+        <article class="stat-chip">
+          <span>Story Wins</span>
+          <strong id="winsValue">0</strong>
+        </article>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel menu-panel">
+        <div class="panel-heading">
+          <p class="eyebrow">Race Hub</p>
+          <h2>Choose your next move</h2>
+        </div>
+        <div class="menu-actions">
+          <button class="menu-button is-active" data-view-target="storyView">Story Mode</button>
+          <button class="menu-button" data-view-target="garageView">Garage</button>
+          <button class="menu-button" data-view-target="onlineView">Code Duel</button>
+          <button class="menu-button" data-view-target="helpView">How To Play</button>
+        </div>
+
+        <div class="view-stack">
+          <section class="content-view is-active" id="storyView">
+            <div class="card-grid story-grid" id="storyList"></div>
+          </section>
+
+          <section class="content-view" id="garageView">
+            <div class="garage-layout">
+              <article class="panel inset-panel car-card">
+                <p class="eyebrow">Current Build</p>
+                <h3 id="carName">Apex GT-1</h3>
+                <div class="car-preview">
+                  <div class="car-silhouette">
+                    <span class="car-body"></span>
+                    <span class="car-window"></span>
+                    <span class="wheel wheel-left"></span>
+                    <span class="wheel wheel-right"></span>
+                  </div>
+                </div>
+                <div class="stat-bars" id="carStats"></div>
+              </article>
+
+              <article class="panel inset-panel upgrade-panel">
+                <div class="panel-heading">
+                  <p class="eyebrow">Garage Upgrades</p>
+                  <h3>Level up your car</h3>
+                </div>
+                <div class="upgrade-list" id="upgradeList"></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="content-view" id="onlineView">
+            <div class="online-layout">
+              <article class="panel inset-panel">
+                <div class="panel-heading">
+                  <p class="eyebrow">Versus Prototype</p>
+                  <h3>Create or join a room code</h3>
+                </div>
+                <p class="support-copy">
+                  This browser build includes a room-code prototype that syncs between tabs on the same hosted site.
+                  It is structured so we can swap in a real backend later for full internet multiplayer.
+                </p>
+                <div class="online-actions">
+                  <button class="button button-primary" id="createRoomButton">Create Room</button>
+                  <div class="join-row">
+                    <input type="text" id="joinCodeInput" maxlength="6" placeholder="Enter code">
+                    <button class="button button-secondary" id="joinRoomButton">Join Room</button>
+                  </div>
+                </div>
+                <div class="room-card">
+                  <p class="room-label">Current Room</p>
+                  <strong id="roomCodeValue">No active room</strong>
+                  <p id="roomStatus">Create a room, share the code, then have the other player join from another tab or browser window.</p>
+                </div>
+              </article>
+
+              <article class="panel inset-panel">
+                <div class="panel-heading">
+                  <p class="eyebrow">Ready Check</p>
+                  <h3>Race prep</h3>
+                </div>
+                <div class="ready-grid">
+                  <article class="ready-card">
+                    <span>Host</span>
+                    <strong id="hostReadyState">Waiting</strong>
+                  </article>
+                  <article class="ready-card">
+                    <span>Guest</span>
+                    <strong id="guestReadyState">Waiting</strong>
+                  </article>
+                </div>
+                <div class="online-actions compact">
+                  <button class="button button-primary" id="toggleReadyButton">Toggle Ready</button>
+                  <button class="button button-secondary" id="startDuelButton">Start Duel</button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="content-view" id="helpView">
+            <div class="help-grid">
+              <article class="panel inset-panel help-card">
+                <p class="eyebrow">Controls</p>
+                <h3>Win clean races</h3>
+                <ul>
+                  <li><strong>W / Arrow Up</strong> accelerate</li>
+                  <li><strong>S / Arrow Down</strong> brake</li>
+                  <li><strong>A/D or Arrow Keys</strong> steer</li>
+                  <li><strong>Shift</strong> use nitro burst</li>
+                </ul>
+              </article>
+              <article class="panel inset-panel help-card">
+                <p class="eyebrow">Progression</p>
+                <h3>Build your ride</h3>
+                <ul>
+                  <li>Finish story races to earn credits and XP.</li>
+                  <li>Spend credits on speed, acceleration, grip, and nitro.</li>
+                  <li>Harder races unlock as you collect more wins.</li>
+                </ul>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="panel race-panel">
+        <div class="race-stage">
+          <canvas id="raceCanvas" width="920" height="540" aria-label="Racing game canvas"></canvas>
+          <div class="race-overlay" id="raceOverlay">
+            <div class="overlay-card">
+              <p class="eyebrow" id="overlayTag">Story Event</p>
+              <h2 id="overlayTitle">Select a race to start</h2>
+              <p id="overlayText">
+                Pick an event from story mode, upgrade your car in the garage, or set up a versus room.
+              </p>
+              <div class="overlay-actions">
+                <button class="button button-primary" id="overlayActionButton">Back To Story</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hud-grid">
+          <article class="hud-card">
+            <span>Event</span>
+            <strong id="hudEvent">Free Run</strong>
+          </article>
+          <article class="hud-card">
+            <span>Lap Progress</span>
+            <strong id="hudProgress">0%</strong>
+          </article>
+          <article class="hud-card">
+            <span>Position</span>
+            <strong id="hudPosition">-</strong>
+          </article>
+          <article class="hud-card">
+            <span>Speed</span>
+            <strong id="hudSpeed">0 mph</strong>
+          </article>
+          <article class="hud-card">
+            <span>Nitro</span>
+            <strong id="hudNitro">100%</strong>
+          </article>
+        </div>
+
+        <div class="message-strip" id="messageStrip">
+          Welcome to Night Circuit Legends. Start your first race from story mode.
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
