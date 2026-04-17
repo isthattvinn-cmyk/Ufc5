@@ -146,7 +146,9 @@ h3 {
 .story-tags,
 .stat-bars,
 .upgrade-list,
-.help-grid {
+.help-grid,
+.map-layout,
+.quest-list {
   display: grid;
   gap: 14px;
 }
@@ -341,7 +343,8 @@ h3 {
 
 .garage-layout,
 .online-layout,
-.help-grid {
+.help-grid,
+.map-layout {
   grid-template-columns: 1fr;
 }
 
@@ -454,6 +457,53 @@ input {
   text-transform: uppercase;
 }
 
+.race-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.map-hint {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+#cityMapCanvas {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+  border: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgba(232, 239, 231, 0.96), rgba(219, 229, 221, 0.98)),
+    #edf2ec;
+}
+
+.quest-item {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 14px;
+  background: linear-gradient(180deg, rgba(18, 29, 59, 0.92), rgba(8, 14, 29, 0.82));
+}
+
+.quest-item.is-active {
+  border-color: rgba(73, 231, 255, 0.52);
+  box-shadow: 0 0 0 1px rgba(73, 231, 255, 0.24) inset;
+}
+
+.quest-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.quest-distance {
+  color: var(--lime);
+}
+
 .race-stage {
   position: relative;
   overflow: hidden;
@@ -551,6 +601,11 @@ li + li {
   .join-row,
   .ready-grid {
     grid-template-columns: 1fr;
+  }
+
+  .race-toolbar {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   h1 {

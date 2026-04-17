@@ -50,6 +50,7 @@
           <h2>Choose your next move</h2>
         </div>
         <div class="menu-actions">
+          <button class="menu-button" data-view-target="mapView">City Map</button>
           <button class="menu-button is-active" data-view-target="storyView">Story Mode</button>
           <button class="menu-button" data-view-target="garageView">Garage</button>
           <button class="menu-button" data-view-target="onlineView">Code Duel</button>
@@ -57,6 +58,26 @@
         </div>
 
         <div class="view-stack">
+          <section class="content-view" id="mapView">
+            <div class="map-layout">
+              <article class="panel inset-panel">
+                <div class="panel-heading">
+                  <p class="eyebrow">Free Roam</p>
+                  <h3>City traffic map</h3>
+                </div>
+                <canvas id="cityMapCanvas" width="360" height="360" aria-label="City map"></canvas>
+              </article>
+
+              <article class="panel inset-panel">
+                <div class="panel-heading">
+                  <p class="eyebrow">Quest Feed</p>
+                  <h3>Story jobs around the city</h3>
+                </div>
+                <div class="quest-list" id="questList"></div>
+              </article>
+            </div>
+          </section>
+
           <section class="content-view is-active" id="storyView">
             <div class="card-grid story-grid" id="storyList"></div>
           </section>
@@ -151,6 +172,7 @@
                 <p class="eyebrow">Progression</p>
                 <h3>Build your ride</h3>
                 <ul>
+                  <li>Use the Map button to free roam between connected districts.</li>
                   <li>Finish story races to earn credits and XP.</li>
                   <li>Spend credits on speed, acceleration, grip, and nitro.</li>
                   <li>Harder races unlock as you collect more wins.</li>
@@ -162,6 +184,10 @@
       </section>
 
       <section class="panel race-panel">
+        <div class="race-toolbar">
+          <button class="button button-secondary" id="mapToggleButton">Map</button>
+          <div class="map-hint" id="mapHint">Open the city map to free roam between story quests.</div>
+        </div>
         <div class="race-stage">
           <canvas id="raceCanvas" width="920" height="540" aria-label="Racing game canvas"></canvas>
           <div class="race-overlay" id="raceOverlay">
